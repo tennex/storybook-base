@@ -1,20 +1,28 @@
-import { StorybookConfig } from "@storybook/react-vite";
+import { type StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
-  addons: [
-    "@chromatic-com/storybook",
-    "@storybook/addon-docs",
-    "@storybook/addon-a11y",
-    "@storybook/addon-vitest",
-  ],
+  addons: ['@chromatic-com/storybook', '@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-vitest'],
+  core: {
+    disableTelemetry: true,
+  },
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx|scss)',
+    {
+      directory: '../src/components',
+      files: '**/*.stories.@(js|jsx|mjs|ts|tsx|scss)',
+      titlePrefix: 'Components',
+    },
+    {
+      directory: '../src/views',
+      files: '**/*.stories.@(js|jsx|mjs|ts|tsx|scss)',
+      titlePrefix: 'Views',
+    },
+  ],
 };
 
 export default config;

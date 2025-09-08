@@ -1,21 +1,22 @@
 import { expect, userEvent, within } from 'storybook/test';
 
-import { Page } from './Page';
+import { Default } from './default';
 
-export default {
-  title: 'Example/Page',
-  component: Page,
+const meta = {
+  component: Default,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
 };
 
+export default meta;
+
 export const LoggedOut = {};
 
 // More on component testing: https://storybook.js.org/docs/writing-tests/interaction-testing
 export const LoggedIn = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
     const loginButton = canvas.getByRole('button', { name: /Log in/i });
     await expect(loginButton).toBeInTheDocument();

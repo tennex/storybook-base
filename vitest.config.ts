@@ -5,8 +5,7 @@ import { defineConfig } from 'vitest/config';
 
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 
-const dirname =
-  typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
@@ -20,14 +19,14 @@ export default defineConfig({
           storybookTest({ configDir: path.join(dirname, '.storybook') }),
         ],
         test: {
-          name: 'storybook',
           browser: {
-        enabled: true,
-        headless: true,
-        provider: 'playwright',
-        instances: [{ browser: 'chromium' }]
-      },
-          setupFiles: ['.storybook/vitest.setup.js'],
+            enabled: true,
+            headless: true,
+            instances: [{ browser: 'chromium' }],
+            provider: 'playwright',
+          },
+          name: 'storybook',
+          setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
     ],
