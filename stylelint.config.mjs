@@ -28,13 +28,14 @@ export default {
       true,
       {
         severity: 'error',
+        ignore: ['css-nesting', 'css-overflow'],
       },
     ],
     'scss/at-extend-no-missing-placeholder': null,
     'scss/at-mixin-argumentless-call-parentheses': 'always',
     'scss/dollar-variable-empty-line-before': null,
     'scss/double-slash-comment-empty-line-before': null,
-    'scss/load-partial-extension': 'always',
+    'scss/load-partial-extension': 'never',
     'scss/operator-no-newline-after': null,
   },
 };

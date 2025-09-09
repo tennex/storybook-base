@@ -73,9 +73,10 @@ export default defineConfig(
           pathGroupsExcludedImportTypes: ['scss', 'css'],
         },
       ],
+      'newline-before-return': 'error',
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
-      'sort-keys/sort-keys-fix': 'warn',
+      'sort-keys/sort-keys-fix': 'error',
     },
   }
 );

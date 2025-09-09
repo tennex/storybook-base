@@ -10,12 +10,16 @@ const config: StorybookConfig = {
     options: {},
   },
   stories: [
-    '../src/**/*.mdx',
-    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx|scss)',
+    '../docs/**/*.mdx',
     {
       directory: '../src/components',
       files: '**/*.stories.@(js|jsx|mjs|ts|tsx|scss)',
       titlePrefix: 'Components',
+    },
+    {
+      directory: '../src/modules',
+      files: '**/*.stories.@(js|jsx|mjs|ts|tsx|scss)',
+      titlePrefix: 'Modules',
     },
     {
       directory: '../src/views',

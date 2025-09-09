@@ -1,0 +1,91 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:map';
+
+@use './variables' as *;
+
+@mixin bp($point) {
+  @if $point == xxs {
+    @media only screen and (max-width: #{$bp-xs-min - 1}) {
+      @content;
+    }
+  }
+
+  @if $point == xs-min {
+    @media only screen and (min-width: #{$bp-xs-min}) {
+      @content;
+    }
+  }
+
+  @if $point == sm-min {
+    @media only screen and (min-width: #{$bp-sm-min}) {
+      @content;
+    }
+  }
+
+  @if $point == md-min {
+    @media only screen and (min-width: #{$bp-md-min}) {
+      @content;
+    }
+  }
+
+  @if $point == lg-min {
+    @media only screen and (min-width: #{$bp-lg-min}) {
+      @content;
+    }
+  }
+
+  @if $point == xl-min {
+    @media only screen and (min-width: #{$bp-xl-min}) {
+      @content;
+    }
+  }
+}
+
+@mixin aspect-ratio($width, $height, $element) {
+  position: relative;
+
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: math.div($height, $width) * 100%;
+  }
+
+  > .#{$element} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: map.get($zindex, 'default');
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+@mixin transition($type, $speed: $transition-duration, $ease: $transition-easing, $delay: 0ms) {
+  transition-property: $type;
+  transition-duration: #{$speed};
+  transition-timing-function: #{$ease};
+  transition-delay: #{$delay};
+}
+
+@function strip-unit($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function rem($size) {
+  @return math.div(strip-unit($size), strip-unit($font-size-base)) * 1rem;
+}

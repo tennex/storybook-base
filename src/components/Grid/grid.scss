@@ -1,0 +1,215 @@
+@use 'sass:math';
+
+@use '../../tokens/variables' as *;
+@use '../../tokens/mixins' as *;
+
+$grid-cols: 4;
+$grid-cols-sm: 12;
+
+$grid-gutter: 8px;
+$grid-gutter-sm: 16px;
+
+@mixin make-grid($name, $columns) {
+  @for $i from 1 through $columns {
+    .grid__col--#{$name}-#{$i} {
+      flex-basis: math.div(100%, $columns) * $i;
+      max-width: math.div(100%, $columns) * $i;
+    }
+  }
+
+  @for $i from 1 through $columns {
+    .grid__col--offset-#{$name}-#{$i} {
+      margin-left: math.div(100%, $columns) * $i;
+    }
+  }
+
+  .grid__col--#{$name} {
+    flex-grow: 0;
+    flex-basis: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .grid--no-wrap-#{$name} {
+    flex-wrap: nowrap;
+  }
+
+  .grid--wrap-#{$name} {
+    flex-wrap: wrap;
+  }
+
+  .grid__col--min-#{$name} {
+    flex-grow: 0;
+    flex-basis: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .grid__col--max-#{$name} {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    max-width: 100%;
+  }
+
+  .grid__col--top-#{$name} {
+    align-self: flex-start;
+  }
+
+  .grid__col--middle-#{$name} {
+    align-self: center;
+  }
+
+  .grid__col--bottom-#{$name} {
+    align-self: flex-end;
+  }
+
+  .grid__col--original-#{$name} {
+    order: 0;
+  }
+
+  .grid__col--first-#{$name} {
+    order: -1;
+  }
+
+  .grid__col--last-#{$name} {
+    order: 1;
+  }
+
+  .grid--reverse-#{$name} {
+    flex-direction: row-reverse;
+  }
+
+  .grid--start-#{$name} {
+    justify-content: flex-start;
+  }
+
+  .grid--center-#{$name} {
+    justify-content: center;
+  }
+
+  .grid--end-#{$name} {
+    justify-content: flex-end;
+  }
+
+  .grid--around-#{$name} {
+    justify-content: space-around;
+  }
+
+  .grid--between-#{$name} {
+    justify-content: space-between;
+  }
+
+  .grid--top-#{$name} {
+    align-items: flex-start;
+  }
+
+  .grid--middle-#{$name} {
+    align-items: center;
+  }
+
+  .grid--bottom-#{$name} {
+    align-items: flex-end;
+  }
+}
+
+@mixin grid-gutter($name, $gutter-size, $gutter-xs-size: null) {
+  .grid--gutter-#{$name} {
+    margin-right: $gutter-size * 0.5 * -1;
+    margin-left: $gutter-size * 0.5 * -1;
+    margin-bottom: $gutter-size * -1;
+
+    @if $gutter-xs-size {
+      @media (max-width: ($bp-md-min - 1)) {
+        margin-right: $gutter-xs-size * 0.5 * -1;
+        margin-left: $gutter-xs-size * 0.5 * -1;
+        margin-bottom: $gutter-xs-size * -1;
+      }
+    }
+  }
+
+  .grid__col {
+    .grid--gutter-#{$name} > & {
+      padding-right: $gutter-size * 0.5;
+      padding-left: $gutter-size * 0.5;
+      margin-bottom: $gutter-size;
+
+      @if $gutter-xs-size {
+        @media (max-width: ($bp-md-min - 1)) {
+          padding-right: $gutter-xs-size * 0.5;
+          padding-left: $gutter-xs-size * 0.5;
+          margin-bottom: $gutter-xs-size;
+        }
+      }
+    }
+  }
+}
+
+.grid {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@include grid-gutter(default, $grid-gutter-sm, $grid-gutter);
+@include grid-gutter(none, 0);
+
+.grid--no-wrap {
+  flex-wrap: nowrap;
+}
+
+.grid--gutter-none {
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.grid__col {
+  flex: 0 0 auto;
+  flex-basis: 100%;
+  max-width: 100%;
+  width: 100%;
+  outline: none;
+
+  .grid--equalheight > & {
+    display: flex;
+  }
+
+  .grid--gutter-none > & {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+.grid__col--min {
+  flex-grow: 0;
+  flex-basis: auto;
+  width: auto;
+  max-width: 100%;
+}
+
+.grid__col--max {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+@include make-grid(xs, $grid-cols);
+
+@include bp(sm-min) {
+  @include make-grid(sm, $grid-cols-sm);
+}
+
+@include bp(md-min) {
+  @include make-grid(md, $grid-cols-sm);
+}
+
+@include bp(lg-min) {
+  @include make-grid(lg, $grid-cols-sm);
+}
+
+@include bp(xl-min) {
+  @include make-grid(xl, $grid-cols-sm);
+}

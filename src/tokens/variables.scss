@@ -1,0 +1,68 @@
+/* Variables */
+
+$page-min-width: 360px;
+$page-max-width: 1288px;
+
+/* BREAKPOINTS */
+
+$bp-xs-min: 360px;
+$bp-sm-min: 600px;
+$bp-md-min: 800px;
+$bp-lg-min: 1024px;
+$bp-xl-min: 1288px;
+
+/* TYPOGRAPHY */
+
+$font-family-base: 'Nunito Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+/* FONT SIZE */
+
+$font-size-base: 16px;
+
+$font-size-h1-xs: 30px;
+$font-size-h1-md: 36px;
+$font-size-h1-xl: 42px;
+
+$font-size-h2-xs: 28px;
+$font-size-h2-md: 30px;
+$font-size-h2-xl: 32px;
+
+$font-size-h3: 24px;
+
+$font-size-h4: 20px;
+
+$font-size-h5: 18px;
+
+/* LINE HEIGHT */
+
+$line-height-base: 1.5;
+
+$line-height-h1-xs: 30px;
+$line-height-h1-md: 44px;
+$line-height-h1-xl: 52px;
+
+$line-height-h2-xs: 36px;
+$line-height-h2-md: 38px;
+$line-height-h2-xl: 40px;
+
+$line-height-h3: 1.33;
+
+$line-height-h4: 1.3;
+
+$line-height-h5: 1.33;
+
+/* FONT WEIGHT */
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+/* TRANSITIONS */
+
+$transition-duration: 100ms;
+$transition-easing: ease-in-out;
+
+/* INDICES */
+
+$zindex: (
+  default: 1,
+);
