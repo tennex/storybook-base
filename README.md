@@ -1,5 +1,6 @@
 # Storybook Base
 
+[![Chromatic](https://github.com/tennex/storybook-base/actions/workflows/chromatic.yml/badge.svg)](https://github.com/tennex/storybook-base/actions/workflows/chromatic.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A foundational setup for Storybook projects, built with [React](https://react.dev), [Typescript](https://www.typescriptlang.org/), [Storybook](https://storybook.js.org/), and [Vite](https://vite.dev/). This template provides a streamlined development environment for building and documenting UI components efficiently.
