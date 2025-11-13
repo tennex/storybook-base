@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, HeaderUser } from '../../modules/Header/header';
+import { Header, HeaderUser } from '../../modules/header/header';
 
 import './default.scss';
 

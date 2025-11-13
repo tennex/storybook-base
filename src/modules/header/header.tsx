@@ -1,6 +1,6 @@
 import type { MouseEvent } from 'react';
 
-import { Button } from '../../components/Button/button';
+import { Button } from '../../components/button/button';
 
 import './header.scss';
 
