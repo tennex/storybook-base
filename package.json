@@ -16,11 +16,11 @@
   "type": "module",
   "scripts": {
     "build": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes",
     "dev": "storybook dev -p 6006 --no-open",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint 'src/**/*.{css,scss}'",
-    "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "chromatic": "npx chromatic --project-token chpt_8bb64403dbc501e"
+    "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "browserslist": [
     "> 0.5%",
@@ -42,6 +42,7 @@
     "@vitest/browser": "^4.0.8",
     "@vitest/browser-playwright": "^4.0.8",
     "@vitest/coverage-v8": "^4.0.8",
+    "chromatic": "^13.3.3",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-compat": "^6.0.2",
