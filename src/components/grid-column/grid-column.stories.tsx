@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Grid } from '../Grid/Grid';
+import { Grid } from '../grid/grid';
 
-import { GridColumn } from './GridColumn';
+import { GridColumn } from './grid-column';
 
 const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 const columnsPerBreakpoint = {
@@ -88,6 +88,7 @@ const meta = {
       <GridColumn {...args} />
     </Grid>
   ),
+  title: 'Grid Column',
 } satisfies Meta<typeof GridColumn>;
 
 export default meta;

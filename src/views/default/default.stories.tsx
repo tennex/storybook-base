@@ -1,9 +1,10 @@
 import { expect, userEvent, within } from 'storybook/test';
 
-import { Default } from './Default';
+import { Default } from './default';
 
 const meta = {
   component: Default,
+  title: 'Default',
 };
 
 export default meta;

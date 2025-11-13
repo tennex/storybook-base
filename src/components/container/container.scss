@@ -1,0 +1,29 @@
+@use '../../tokens/variables' as *;
+@use '../../tokens/mixins' as *;
+
+$container-padding: 16px;
+$container-padding-sm: 20px;
+$container-padding-md: 28px;
+$container-padding-lg: 32px;
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $page-max-width;
+  padding: 32px $container-padding;
+
+  @include bp(sm-min) {
+    padding-right: $container-padding-sm;
+    padding-left: $container-padding-sm;
+  }
+
+  @include bp(md-min) {
+    padding-right: $container-padding-md;
+    padding-left: $container-padding-md;
+  }
+
+  @include bp(lg-min) {
+    padding-right: $container-padding-lg;
+    padding-left: $container-padding-lg;
+  }
+}
