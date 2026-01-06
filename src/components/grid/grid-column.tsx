@@ -1,5 +1,7 @@
 import { Break, BreakXS, BreakSM } from '../../utils';
 
+import styles from './grid.module.scss';
+
 export type GridColumnWithMinMax = 'min' | 'max';
 export type GridColumnWidthNumbersXS = '1' | '2' | '3' | '4';
 export type GridColumnWidthNumbersSM = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
@@ -49,19 +51,19 @@ export interface GridColumnProps {
 
 export const GridColumn = (props: GridColumnProps): React.ReactElement => {
   const BEM = () => {
-    const classArray = ['grid__col'];
+    const classArray = [styles['grid__col']];
 
     if (props.width) {
-      props.width.forEach((w) => classArray.push(`grid__col--${w}`));
+      props.width.forEach((w) => classArray.push(styles[`grid__col--${w}`]));
     }
     if (props.offset) {
-      props.offset.forEach((o) => classArray.push(`grid__col--offset-${o}`));
+      props.offset.forEach((o) => classArray.push(styles[`grid__col--offset-${o}`]));
     }
     if (props.order) {
-      props.order.forEach((o) => classArray.push(`grid__col--${o}`));
+      props.order.forEach((o) => classArray.push(styles[`grid__col--${o}`]));
     }
     if (props.align) {
-      props.align.forEach((a) => classArray.push(`grid__col--${a}`));
+      props.align.forEach((a) => classArray.push(styles[`grid__col--${a}`]));
     }
     if (props.className) {
       classArray.push(props.className);

@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 
 import { Break } from '../../utils';
 
-import './grid.scss';
+import styles from './grid.module.scss';
 
 export type GridAlignmentPrefix = 'start' | 'center' | 'end' | 'top' | 'middle' | 'bottom' | 'around' | 'between';
 export type GridAlignment = `${GridAlignmentPrefix}-${string & Break}`;
@@ -65,34 +65,34 @@ export const Grid = ({
   wrap,
 }: GridProps): React.ReactElement => {
   const BEM = () => {
-    const classArray = ['grid'];
+    const classArray = [styles['grid']];
 
     if (equalHeight) {
-      classArray.push('grid--equalheight');
+      classArray.push(styles['grid--equalheight']);
     }
 
     if (gutter) {
-      classArray.push(`grid--gutter-${gutter}`);
+      classArray.push(styles[`grid--gutter-${gutter}`]);
     }
 
     if (reverse) {
-      reverse.forEach((r) => classArray.push(`grid--reverse-${r}`));
+      reverse.forEach((r) => classArray.push(styles[`grid--reverse-${r}`]));
     }
 
     if (align) {
-      align.forEach((a) => classArray.push(`grid--${a}`));
+      align.forEach((a) => classArray.push(styles[`grid--${a}`]));
     }
 
     if (noWrap) {
       if (Array.isArray(noWrap)) {
-        noWrap.forEach((n) => classArray.push(`grid--no-wrap-${n}`));
+        noWrap.forEach((n) => classArray.push(styles[`grid--no-wrap-${n}`]));
       } else {
-        classArray.push('grid--no-wrap-xs');
+        classArray.push(styles['grid--no-wrap-xs']);
       }
     }
 
     if (wrap) {
-      wrap.forEach((val: string) => classArray.push(`grid--wrap-${val}`));
+      wrap.forEach((val: string) => classArray.push(styles[`grid--wrap-${val}`]));
     }
 
     if (className) {
