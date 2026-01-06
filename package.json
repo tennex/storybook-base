@@ -20,7 +20,8 @@
     "dev": "storybook dev -p 6006 --no-open",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint 'src/**/*.{css,scss}'",
-    "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
+    "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "test": "vitest --project=storybook --run"
   },
   "browserslist": [
     "> 0.5%",
