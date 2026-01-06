@@ -5,6 +5,17 @@ import { defineConfig } from 'vitest/config';
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
+    coverage: {
+      enabled: true,
+      include: ['src/**/*.{js,jsx,ts,tsx}'],
+      thresholds: {
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        perFile: true,
+        statements: 80,
+      },
+    },
     projects: [
       {
         extends: true,
