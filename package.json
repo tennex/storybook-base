@@ -21,7 +21,7 @@
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint 'src/**/*.{css,scss}'",
     "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "test": "vitest --project=storybook --run"
+    "test": "vitest --project=storybook --coverage --run"
   },
   "browserslist": [
     "> 0.5%",

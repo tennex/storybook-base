@@ -459,3 +459,22 @@ export const Width: Story = {
     equalHeight: true,
   },
 };
+
+export const NoWrap: Story = {
+  args: {
+    noWrap: true,
+  },
+};
+
+export const Wrap: Story = {
+  args: {
+    wrap: ['md'],
+  },
+};
+
+export const ClassName: Story = {
+  args: {
+    className: 'test-class',
+  },
+  tags: ['!dev', '!autodocs'],
+};
