@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Grid } from '../grid/grid';
-
+import { Grid } from './grid';
 import { GridColumn } from './grid-column';
 
 const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl'] as const;

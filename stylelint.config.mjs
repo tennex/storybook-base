@@ -28,7 +28,7 @@ export default {
       true,
       {
         severity: 'error',
-        ignore: ['css-nesting', 'css-overflow'],
+        ignore: ['css-nesting', 'css-clip-path', 'css-masks', 'css-overflow'],
       },
     ],
     'scss/at-extend-no-missing-placeholder': null,

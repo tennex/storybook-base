@@ -24,6 +24,7 @@ const meta: Meta<typeof Container> = {
           'The Container component restricts the width of its children, ensuring they stay within its boundaries.',
       },
     },
+    layout: 'fullscreen',
   },
   title: 'Container',
 } satisfies Meta<typeof Container>;

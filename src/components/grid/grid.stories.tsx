@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { GridColumn, type GridColumnProps } from '../grid-column/grid-column';
-
 import { Grid } from './grid';
+import { GridColumn, type GridColumnProps } from './grid-column';
 
 const GridAlignmentValues = [
   ...(['xs', 'sm', 'md', 'lg', 'xl'] as const).flatMap((breakpoint) =>
@@ -464,12 +463,14 @@ export const NoWrap: Story = {
   args: {
     noWrap: true,
   },
+  tags: ['!dev', '!autodocs'],
 };
 
 export const Wrap: Story = {
   args: {
     wrap: ['md'],
   },
+  tags: ['!dev', '!autodocs'],
 };
 
 export const ClassName: Story = {

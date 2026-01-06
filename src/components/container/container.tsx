@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import styles from './container.module.scss';
+
 export interface ContainerProps {
   /**
    * Content
@@ -13,7 +15,7 @@ export interface ContainerProps {
 
 export const Container = ({ children, className }: ContainerProps) => {
   const BEM = () => {
-    const classArray = ['container'];
+    const classArray = [styles['container']];
 
     if (className) {
       classArray.push(className);
