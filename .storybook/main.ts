@@ -1,7 +1,13 @@
 import { type StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  addons: ['@chromatic-com/storybook', '@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-vitest'],
+  addons: [
+    '@chromatic-com/storybook',
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
+    '@storybook/addon-mcp',
+    '@storybook/addon-vitest',
+  ],
   core: {
     disableTelemetry: true,
   },
