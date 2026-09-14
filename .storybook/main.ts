@@ -5,6 +5,10 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
+  features: {
+    experimentalDocgenServer: true,
+    experimentalReview: true,
+  },
   framework: {
     name: '@storybook/react-vite',
     options: {},

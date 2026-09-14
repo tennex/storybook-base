@@ -420,3 +420,4 @@ FodyWeavers.xsd
 *storybook.log
 storybook-static
 /coverage
+*.tsbuildinfo
