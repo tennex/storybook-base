@@ -32,7 +32,6 @@ export default defineConfig({
             provider: playwright(),
           },
           name: 'storybook',
-          setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
     ],
