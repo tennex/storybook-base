@@ -28,9 +28,9 @@ export interface GridProps {
    */
   equalHeight?: boolean;
   /**
-   * Use when in need for either none or default spacing between columns.
+   * Set to "none" to remove the default spacing between columns.
    */
-  gutter?: 'default' | 'none';
+  gutter?: 'none';
   /**
    * Disable wrapping in certain breakpoint(s).
    * Can be used with breakpoints or as boolean value.
@@ -57,7 +57,7 @@ export const Grid = ({
   align,
   children,
   className,
-  gutter = 'default',
+  gutter,
   equalHeight,
   noWrap,
   reverse,

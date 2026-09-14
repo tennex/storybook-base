@@ -1,7 +1,7 @@
 @use 'sass:math';
 
-@use '../../tokens/variables' as *;
-@use '../../tokens/mixins' as *;
+@use '../../tokens/variables';
+@use '../../tokens/mixins';
 
 $grid-cols: 4;
 $grid-cols-sm: 12;
@@ -120,7 +120,7 @@ $grid-gutter-sm: 16px;
     margin-bottom: $gutter-size * -1;
 
     @if $gutter-xs-size {
-      @media (max-width: ($bp-md-min - 1)) {
+      @media (max-width: (variables.$bp-md-min - 1)) {
         margin-right: $gutter-xs-size * 0.5 * -1;
         margin-left: $gutter-xs-size * 0.5 * -1;
         margin-bottom: $gutter-xs-size * -1;
@@ -135,7 +135,7 @@ $grid-gutter-sm: 16px;
       margin-bottom: $gutter-size;
 
       @if $gutter-xs-size {
-        @media (max-width: ($bp-md-min - 1)) {
+        @media (max-width: (variables.$bp-md-min - 1)) {
           padding-right: $gutter-xs-size * 0.5;
           padding-left: $gutter-xs-size * 0.5;
           margin-bottom: $gutter-xs-size;
@@ -150,9 +150,17 @@ $grid-gutter-sm: 16px;
   flex: 1 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-right: $grid-gutter * 0.5 * -1;
+  margin-left: $grid-gutter * 0.5 * -1;
+  margin-bottom: $grid-gutter * -1;
+
+  @include mixins.bp(sm-min) {
+    margin-right: $grid-gutter-sm * 0.5 * -1;
+    margin-left: $grid-gutter-sm * 0.5 * -1;
+    margin-bottom: $grid-gutter-sm * -1;
+  }
 }
 
-@include grid-gutter(default, $grid-gutter-sm, $grid-gutter);
 @include grid-gutter(none, 0);
 
 .grid--no-wrap {
@@ -171,6 +179,15 @@ $grid-gutter-sm: 16px;
   max-width: 100%;
   width: 100%;
   outline: none;
+  padding-right: $grid-gutter * 0.5;
+  padding-left: $grid-gutter * 0.5;
+  margin-bottom: $grid-gutter;
+
+  @include mixins.bp(sm-min) {
+    padding-right: $grid-gutter-sm * 0.5;
+    padding-left: $grid-gutter-sm * 0.5;
+    margin-bottom: $grid-gutter-sm;
+  }
 
   .grid--equalheight > & {
     display: flex;
@@ -198,18 +215,18 @@ $grid-gutter-sm: 16px;
 
 @include make-grid(xs, $grid-cols);
 
-@include bp(sm-min) {
+@include mixins.bp(sm-min) {
   @include make-grid(sm, $grid-cols-sm);
 }
 
-@include bp(md-min) {
+@include mixins.bp(md-min) {
   @include make-grid(md, $grid-cols-sm);
 }
 
-@include bp(lg-min) {
+@include mixins.bp(lg-min) {
   @include make-grid(lg, $grid-cols-sm);
 }
 
-@include bp(xl-min) {
+@include mixins.bp(xl-min) {
   @include make-grid(xl, $grid-cols-sm);
 }

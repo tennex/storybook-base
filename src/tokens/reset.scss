@@ -1,5 +1,5 @@
-@use './colors' as *;
-@use './variables' as *;
+@use './colors';
+@use './variables';
 
 html,
 body,
@@ -111,12 +111,12 @@ html {
 }
 
 body {
-  font-family: $font-family-base;
-  line-height: $line-height-base;
-  font-size: $font-size-base;
-  color: $color-text;
-  min-width: $page-min-width;
-  background: $color-neutral-000;
+  font-family: variables.$font-family-base;
+  line-height: variables.$line-height-base;
+  font-size: variables.$font-size-base;
+  color: colors.$color-text;
+  min-width: variables.$page-min-width;
+  background: colors.$color-neutral-000;
   -webkit-font-smoothing: antialiased;
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%;

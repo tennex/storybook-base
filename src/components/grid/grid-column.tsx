@@ -13,8 +13,7 @@ export type BreakPointWidthNumbersSM = `${string & BreakSM}` | `${string & Break
 export type TWidthMinMax = `${GridColumnWithMinMax}-${string & Break}` | GridColumnWithMinMax;
 export type GridColumnWidth = BreakPointWidthNumbersXS | BreakPointWidthNumbersSM | TWidthMinMax;
 export type GridColumnOffset =
-  | `${string & BreakXS}-${GridColumnWidthNumbersXS}`
-  | `${string & BreakSM}-${GridColumnWidthNumbersSM}`;
+  `${string & BreakXS}-${GridColumnWidthNumbersXS}` | `${string & BreakSM}-${GridColumnWidthNumbersSM}`;
 export type GridColumnAlignment = `${GridColumnAlignmentPrefix}-${string & Break}`;
 export type GridColumnOrder = `${GridColumnOrderPrefix}-${string & Break}`;
 

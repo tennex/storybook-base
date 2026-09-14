@@ -2,41 +2,41 @@
 @use 'sass:meta';
 @use 'sass:map';
 
-@use './variables' as *;
+@use './variables';
 
 @mixin bp($point) {
   @if $point == xxs {
-    @media only screen and (max-width: #{$bp-xs-min - 1}) {
+    @media only screen and (max-width: #{variables.$bp-xs-min - 1}) {
       @content;
     }
   }
 
   @if $point == xs-min {
-    @media only screen and (min-width: #{$bp-xs-min}) {
+    @media only screen and (min-width: #{variables.$bp-xs-min}) {
       @content;
     }
   }
 
   @if $point == sm-min {
-    @media only screen and (min-width: #{$bp-sm-min}) {
+    @media only screen and (min-width: #{variables.$bp-sm-min}) {
       @content;
     }
   }
 
   @if $point == md-min {
-    @media only screen and (min-width: #{$bp-md-min}) {
+    @media only screen and (min-width: #{variables.$bp-md-min}) {
       @content;
     }
   }
 
   @if $point == lg-min {
-    @media only screen and (min-width: #{$bp-lg-min}) {
+    @media only screen and (min-width: #{variables.$bp-lg-min}) {
       @content;
     }
   }
 
   @if $point == xl-min {
-    @media only screen and (min-width: #{$bp-xl-min}) {
+    @media only screen and (min-width: #{variables.$bp-xl-min}) {
       @content;
     }
   }
@@ -58,7 +58,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: map.get($zindex, 'default');
+    z-index: map.get(variables.$zindex, 'default');
   }
 }
 
@@ -71,7 +71,7 @@
   white-space: nowrap;
 }
 
-@mixin transition($type, $speed: $transition-duration, $ease: $transition-easing, $delay: 0ms) {
+@mixin transition($type, $speed: variables.$transition-duration, $ease: variables.$transition-easing, $delay: 0ms) {
   transition-property: $type;
   transition-duration: #{$speed};
   transition-timing-function: #{$ease};
@@ -87,5 +87,5 @@
 }
 
 @function rem($size) {
-  @return math.div(strip-unit($size), strip-unit($font-size-base)) * 1rem;
+  @return math.div(strip-unit($size), strip-unit(variables.$font-size-base)) * 1rem;
 }

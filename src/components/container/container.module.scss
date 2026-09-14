@@ -1,5 +1,5 @@
-@use '../../tokens/variables' as Variables;
-@use '../../tokens/mixins' as Mixins;
+@use '../../tokens/variables';
+@use '../../tokens/mixins';
 
 $container-padding: 16px;
 $container-padding-sm: 20px;
@@ -9,20 +9,20 @@ $container-padding-lg: 32px;
 .container {
   margin: 0 auto;
   width: 100%;
-  max-width: Variables.$page-max-width;
+  max-width: variables.$page-max-width;
   padding: 0 $container-padding;
 
-  @include Mixins.bp(sm-min) {
+  @include mixins.bp(sm-min) {
     padding-right: $container-padding-sm;
     padding-left: $container-padding-sm;
   }
 
-  @include Mixins.bp(md-min) {
+  @include mixins.bp(md-min) {
     padding-right: $container-padding-md;
     padding-left: $container-padding-md;
   }
 
-  @include Mixins.bp(lg-min) {
+  @include mixins.bp(lg-min) {
     padding-right: $container-padding-lg;
     padding-left: $container-padding-lg;
   }

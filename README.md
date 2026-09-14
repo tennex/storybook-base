@@ -42,7 +42,8 @@ npm install
 This project includes several scripts to help with development:
 
 - **`npm run dev`**: Starts the Storybook development server at `http://localhost:6006`.
-- **`npm run build`**: Builds a static version of the Storybook UI into the `storybook-static` directory.
+- **`npm run build`**: Builds the public component docs site into `storybook-static`.
+- **`npm run build:chromatic`**: Builds Storybook for Chromatic's visual regression testing.
 - **`npm run lint`**: Lints the project files using ESLint and Stylelint.
 - **`npm run test`**: Runs tests using Vitest.
 
@@ -61,6 +62,22 @@ storybook-base/
 │   └── views/       # Full-page examples or layouts
 └── package.json     # Project dependencies and scripts
 ```
+
+## Story Files
+
+A component can split its stories across up to three files, so that documentation, visual
+regression testing and behavioural testing never get in each other's way:
+
+```
+src/components/<component>/
+├── <component>.stories.tsx        # Documentation — shown in the sidebar and docs page
+├── <component>.visual.stories.tsx # Visual regression snapshots, for Chromatic
+└── <component>.test.stories.tsx   # Behavioural tests, for Vitest
+```
+
+Only the plain `<component>.stories.tsx` file is required. Add a `.visual.` or `.test.` file
+only when a component actually needs one — both import their setup (`args`, `argTypes`, shared
+fixtures, etc.) from the plain file, so nothing has to be duplicated.
 
 ## License
 

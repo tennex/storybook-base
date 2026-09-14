@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Grid } from './grid';
 import { GridColumn, type GridColumnProps } from './grid-column';
 
-const GridAlignmentValues = [
+const gridAlignmentValues = [
   ...(['xs', 'sm', 'md', 'lg', 'xl'] as const).flatMap((breakpoint) =>
     (['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between'] as const).map(
       (prefix) => `${prefix}-${breakpoint}`
@@ -11,7 +11,12 @@ const GridAlignmentValues = [
   ),
 ];
 
-const getStyles = () => ({
+/**
+ * Shared story fixtures. Everything exported from this file with a lowercase name is
+ * reused by `grid.test.stories.tsx` and `grid.visual.stories.tsx`, and kept out of the
+ * story index by `excludeStories` below.
+ */
+export const getStyles = () => ({
   alignItems: 'center',
   border: '1px solid',
   display: 'flex',
@@ -27,7 +32,7 @@ const meta: Meta<typeof Grid> = {
   argTypes: {
     align: {
       control: 'multi-select',
-      options: GridAlignmentValues,
+      options: gridAlignmentValues,
     },
     children: {
       table: {
@@ -60,6 +65,8 @@ const meta: Meta<typeof Grid> = {
     ),
   },
   component: Grid,
+  // Every named export starting with a lowercase letter is a shared fixture, not a story.
+  excludeStories: /^[a-z]/,
   parameters: {
     docs: {
       description: {
@@ -81,14 +88,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-interface GridExampleColumnProps extends GridColumnProps {
+export interface GridExampleColumnProps extends GridColumnProps {
   name?: string;
 }
 
-const getChildren = (items: GridExampleColumnProps[]) =>
+export const getChildren = (items: GridExampleColumnProps[]) =>
   items.map((item: GridColumnProps, index: number) => renderColumn(item, index));
 
-const renderColumn = (props: GridExampleColumnProps, index: number) => {
+export const renderColumn = (props: GridExampleColumnProps, index: number) => {
   const { name, children, ...rest } = props;
 
   return (
@@ -98,7 +105,7 @@ const renderColumn = (props: GridExampleColumnProps, index: number) => {
   );
 };
 
-const equalHeightColumns: GridExampleColumnProps[] = [
+export const equalHeightColumns: GridExampleColumnProps[] = [
   {
     name: 'short column',
     width: ['xs-2'],
@@ -109,7 +116,7 @@ const equalHeightColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const horizontalAlignColumns: GridExampleColumnProps[] = [
+export const horizontalAlignColumns: GridExampleColumnProps[] = [
   {
     name: 'center',
     width: ['xs'],
@@ -132,7 +139,7 @@ const horizontalAlignColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const justifyColumns: GridExampleColumnProps[] = [
+export const justifyColumns: GridExampleColumnProps[] = [
   {
     name: 'column',
     width: ['xs-1'],
@@ -143,7 +150,7 @@ const justifyColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const minMaxColumns: GridExampleColumnProps[] = [
+export const minMaxColumns: GridExampleColumnProps[] = [
   {
     name: 'short column',
     width: ['min-xs'],
@@ -154,7 +161,7 @@ const minMaxColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const nestingColumns: GridExampleColumnProps[] = [
+export const nestingColumns: GridExampleColumnProps[] = [
   {
     children: (
       <Grid>
@@ -200,7 +207,7 @@ const nestingColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const noGutterColumns: GridExampleColumnProps[] = [
+export const noGutterColumns: GridExampleColumnProps[] = [
   {
     name: 'column',
     width: ['xs-2'],
@@ -211,7 +218,7 @@ const noGutterColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const offsetColumns: GridExampleColumnProps[] = [
+export const offsetColumns: GridExampleColumnProps[] = [
   {
     name: '',
     offset: ['xs-3', 'sm-11'],
@@ -239,7 +246,7 @@ const offsetColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const orderColumns: GridExampleColumnProps[] = [
+export const orderColumns: GridExampleColumnProps[] = [
   {
     name: 'first in DOM, but second on screen',
     width: ['sm-6'],
@@ -251,7 +258,7 @@ const orderColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const reverseColumns: GridExampleColumnProps[] = [
+export const reverseColumns: GridExampleColumnProps[] = [
   {
     name: '1',
     width: ['xs-1'],
@@ -270,7 +277,7 @@ const reverseColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const verticalAlignColumns: GridExampleColumnProps[] = [
+export const verticalAlignColumns: GridExampleColumnProps[] = [
   {
     align: ['top-xs'],
     name: 'top',
@@ -288,7 +295,7 @@ const verticalAlignColumns: GridExampleColumnProps[] = [
   },
 ];
 
-const widthColumns: GridExampleColumnProps[] = [
+export const widthColumns: GridExampleColumnProps[] = [
   {
     name: '100%',
     width: ['xs-4'],
@@ -457,25 +464,4 @@ export const Width: Story = {
     children: getChildren(widthColumns),
     equalHeight: true,
   },
-};
-
-export const NoWrap: Story = {
-  args: {
-    noWrap: true,
-  },
-  tags: ['!dev', '!autodocs'],
-};
-
-export const Wrap: Story = {
-  args: {
-    wrap: ['md'],
-  },
-  tags: ['!dev', '!autodocs'],
-};
-
-export const ClassName: Story = {
-  args: {
-    className: 'test-class',
-  },
-  tags: ['!dev', '!autodocs'],
 };
