@@ -1,12 +1,14 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
     open-pull-requests-limit: 10
-
-  - package-ecosystem: "github-actions"
-    directory: "/"
+    ignore:
+      - dependency-name: 'eslint'
+        versions: ['>= 10.0.0'] # Conflicting eslint-plugin-import@2.32.0 peer dependency requirement
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
